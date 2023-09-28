@@ -13,11 +13,12 @@ export class AppComponent {
   sendMessageToIframe() {
     const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
     
-    const message = {
-      someData: 'Hello from the parent app!',
-    };
+    const messageToChild = {
+      "access_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk2NDAyNTUwLCJqdGkiOiI4YzAyMTg2Y2RhZjc0YjEwOWEwNDg1YWUyM2MwODk2ZSIsInVzZXJfaWQiOjU3M30.iqnxWaNT4nYEAg3b0dOTkvJW0q6hIYRv96yU7tkCJ0Y",
+      "timetracker_userId": "573"
+  };
 
-    iframeElement.contentWindow.postMessage(message, 'https://bkt8h3jv-63441.inc1.devtunnels.ms/upload');
+    iframeElement.contentWindow.postMessage(messageToChild, 'https://bkt8h3jv-63441.inc1.devtunnels.ms/upload');
   }
 
 }
