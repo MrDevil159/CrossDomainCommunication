@@ -17,6 +17,7 @@ export class AppComponent {
     localStorage.setItem('P1', data.P1);
     localStorage.setItem('P2', data.P2);
   }
+  
 
   sendMessageToIframe() {
     let P1Value;
