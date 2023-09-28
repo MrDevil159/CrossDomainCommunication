@@ -40,7 +40,7 @@ export class AppComponent {
     }
     let Employee_ID;
     if (localStorage.getItem('Employee_ID')) {
-      P2Value = localStorage.getItem('Employee_ID');
+      Employee_ID = localStorage.getItem('Employee_ID');
       console.log('Employee_ID:', Employee_ID);
     } else {
       console.log('Employee_ID does not exist in local storage to Send, Sending Undefined');
