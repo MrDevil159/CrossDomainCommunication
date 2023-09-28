@@ -17,7 +17,7 @@ export class AppComponent {
       someData: 'Hello from the parent app!',
     };
 
-    iframeElement.contentWindow.postMessage(message, 'http://localhost:63441/upload');
+    iframeElement.contentWindow.postMessage(message, 'https://bkt8h3jv-63441.inc1.devtunnels.ms/upload');
   }
 
 }
