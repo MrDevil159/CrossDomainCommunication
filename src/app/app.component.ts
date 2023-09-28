@@ -7,7 +7,7 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 })
 export class AppComponent {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
-
+  iframeSrc="";
   title = 'parentApp';
   saveInLocalStorage() {
     const data = {
@@ -23,6 +23,7 @@ export class AppComponent {
 
 
   sendMessageToIframe() {
+    this.iframeSrc = "https://bkt8h3jv-63441.inc1.devtunnels.ms/employee";
     this.saveInLocalStorage();
     let P1Value;
     if (localStorage.getItem('P1')) {
