@@ -24,14 +24,14 @@ export class AppComponent {
       P1Value = localStorage.getItem('P1');
       console.log('P1:', P1Value);
     } else {
-      console.log('P1 does not exist in local storage');
+      console.log('P1 does not exist in local storage to Send, Sending Undefined');
     }
     let P2Value;
     if (localStorage.getItem('P1')) {
       P2Value = localStorage.getItem('P2');
       console.log('P2:', P2Value);
     } else {
-      console.log('P2 does not exist in local storage');
+      console.log('P2 does not exist in local storage to Send, Sending Undefined');
     }
 
     const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
