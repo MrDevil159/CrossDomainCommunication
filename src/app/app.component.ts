@@ -65,7 +65,7 @@ export class AppComponent {
       console.log('Employee_ID does not exist in local storage to Send, Sending Undefined');
     }
 
-    const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
+    // const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
     const messageToChild = {
       timetracker_userId: P1Value,
       access_token: P2Value,
@@ -73,12 +73,12 @@ export class AppComponent {
     };
 
 
-    this.intervalSenderConfirm = setInterval(()=> {
-      iframeElement.contentWindow.postMessage(
-        messageToChild,
-        'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
-      );
-    }, 1000);
+    // this.intervalSenderConfirm = setInterval(()=> {
+    //   iframeElement.contentWindow.postMessage(
+    //     messageToChild,
+    //     'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
+    //   );
+    // }, 1000);
     const url = "https://bkt8h3jv-4200.inc1.devtunnels.ms/upload";
     const newTab = window.open(url, '_blank');
 
