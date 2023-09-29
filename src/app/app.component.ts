@@ -9,13 +9,20 @@ export class AppComponent {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
   title = 'parentApp';
 
+  intervalSenderConfirm!:any;
+
   @HostListener('window:message', ['$event'])
   onMessage(event: MessageEvent) {
     // Check if the event origin matches the iframe's origin to ensure security
     if (event.origin === 'https://bkt8h3jv-4200.inc1.devtunnels.ms') {
       // Handle the received message here
       console.log('Received message from iframe:', event.data);
-
+      if(event.data.received===true) {
+        clearInterval(this.intervalSenderConfirm)
+      }
+      if(event.data.received===false) {
+        this.sendMessageToIframe();
+      }
     }
   }
   
@@ -65,9 +72,12 @@ export class AppComponent {
       Employee_ID: Employee_ID
     };
 
-    iframeElement.contentWindow.postMessage(
-      messageToChild,
-      'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
-    );
+
+    this.intervalSenderConfirm = setInterval(()=> {
+      iframeElement.contentWindow.postMessage(
+        messageToChild,
+        'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
+      );
+    }, 1000);
   }
 }
