@@ -79,7 +79,7 @@ export class AppComponent {
     //     'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
     //   );
     // }, 1000);
-    const url = "https://bkt8h3jv-4200.inc1.devtunnels.ms/upload";
+    const url = "https://bkt8h3jv-4200.inc1.devtunnels.ms/employee";
     const newTab = window.open(url, '_blank');
 
     if (newTab) {
