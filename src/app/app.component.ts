@@ -88,7 +88,7 @@ export class AppComponent {
         // Send data to the new tab using postMessage
         setTimeout(() => {
           newTab.postMessage(messageToChild, 'https://bkt8h3jv-4200.inc1.devtunnels.ms/employee');
-        }, 1000);
+        }, 5000);
       });
     } else {
       // Handle the case where the popup blocker prevents opening a new tab
