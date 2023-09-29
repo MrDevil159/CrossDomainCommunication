@@ -23,7 +23,7 @@ export class AppComponent {
 
 
   sendMessageToIframe() {
-    this.iframeSrc = "https://bkt8h3jv-63441.inc1.devtunnels.ms/employee";
+    this.iframeSrc = "https://bkt8h3jv-4200.inc1.devtunnels.ms/employee";
     this.saveInLocalStorage();
     let P1Value;
     if (localStorage.getItem('P1')) {
