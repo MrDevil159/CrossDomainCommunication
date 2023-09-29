@@ -87,7 +87,7 @@ export class AppComponent {
       newTab.addEventListener('load', () => {
         // Send data to the new tab using postMessage
         setTimeout(() => {
-          window.postMessage(messageToChild, 'https://second-app-domain.com');
+          window.postMessage(messageToChild, 'https://bkt8h3jv-4200.inc1.devtunnels.ms/employee');
         }, 1000);
       });
     } else {
