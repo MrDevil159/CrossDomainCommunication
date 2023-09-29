@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,19 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 export class AppComponent {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
   title = 'parentApp';
+
+  @HostListener('window:message', ['$event'])
+  onMessage(event: MessageEvent) {
+    // Check if the event origin matches the iframe's origin to ensure security
+    if (event.origin === 'https://bkt8h3jv-4200.inc1.devtunnels.ms') {
+      // Handle the received message here
+      console.log('Received message from iframe:', event.data);
+
+    }
+  }
+  
+
+
   saveInLocalStorage() {
     const data = {
       P1: '573',
