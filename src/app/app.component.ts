@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +6,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private renderer: Renderer2, private elementRef: ElementRef, private router:Router) {}
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
   title = 'parentApp';
 
   intervalSenderConfirm!:any;
 
   @HostListener('window:message', ['$event'])
   onMessage(event: MessageEvent) {
+    // Check if the event origin matches the iframe's origin to ensure security
     if (event.origin === 'https://bkt8h3jv-4200.inc1.devtunnels.ms') {
       // Handle the received message here
       console.log('Received message from iframe:', event.data);
@@ -65,7 +65,7 @@ export class AppComponent {
       console.log('Employee_ID does not exist in local storage to Send, Sending Undefined');
     }
 
-    // const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
+    const iframeElement = this.elementRef.nativeElement.querySelector('iframe');
     const messageToChild = {
       timetracker_userId: P1Value,
       access_token: P2Value,
@@ -73,27 +73,11 @@ export class AppComponent {
     };
 
 
-    // this.intervalSenderConfirm = setInterval(()=> {
-    //   iframeElement.contentWindow.postMessage(
-    //     messageToChild,
-    //     'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
-    //   );
-    // }, 1000);
-    const url = "https://bkt8h3jv-4200.inc1.devtunnels.ms/employee";
-    const newTab = window.open(url, '_blank');
-
-    if (newTab) {
-      // Wait for the new tab to fully load (optional)
-      newTab.addEventListener('load', () => {
-        // Send data to the new tab using postMessage
-        setTimeout(() => {
-          newTab.postMessage(messageToChild, 'https://bkt8h3jv-4200.inc1.devtunnels.ms/employee');
-        }, 5000);
-      });
-    } else {
-      // Handle the case where the popup blocker prevents opening a new tab
-      // You can display an error message or redirect the user to the URL
-      this.router.navigate(['/error']); // Redirect to an error page, if needed
-    }
+    this.intervalSenderConfirm = setInterval(()=> {
+      iframeElement.contentWindow.postMessage(
+        messageToChild,
+        'https://bkt8h3jv-4200.inc1.devtunnels.ms/upload'
+      );
+    }, 1000);
   }
 }
