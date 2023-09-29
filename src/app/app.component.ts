@@ -86,7 +86,9 @@ export class AppComponent {
       // Wait for the new tab to fully load (optional)
       newTab.addEventListener('load', () => {
         // Send data to the new tab using postMessage
-        newTab.postMessage(messageToChild, url);
+        setTimeout(() => {
+          window.postMessage(messageToChild, 'https://second-app-domain.com');
+        }, 1000);
       });
     } else {
       // Handle the case where the popup blocker prevents opening a new tab
